@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            background-image: url('https://example.com/exotic-background.jpg'); /* Use a beautiful exotic background image */
+            background-size: cover;
+            font-family: 'Playfair Display', serif;
+            color: #fff; /* White text color for contrast */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(255, 105, 180, 0.5); /* Pink glow shadow */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-left-title h2 {
+            color: #ff69b4; /* Vibrant pink title color */
+            font-family: 'Dancing Script', cursive; /* Romantic script font */
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .contact-left-title hr {
+            border: 0;
+            height: 2px;
+            background: #ff69b4; /* Matching pink color */
+            margin-bottom: 20px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-inputs {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ff69b4; /* Pink border */
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            font-size: 1em;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            background-color: #ff69b4; /* Pink button */
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button img {
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #ff1493; /* Darker pink on hover */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        .optional-input {
+            display: none; /* Hide the optional input by default */
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay="" loop="" src="c1.mp3"></audio>
+    <div class="contact-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <div class="contact-left-title">
+                <h2>Kis Din chalogi?</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="32916ce6-9ef2-4d95-8d3a-f8f83464b165">
+            <label for="datetime">Date?:</label>
+            <input type="date" name="datetime" id="datetime" class="contact-inputs" required>
+
+            <!-- Multiple Choice with Dropdown -->
+            <label for="propose-time">Choose an item:</label>
+            <select id="propose-time" name="propose-time" class="contact-inputs" required>
+                <option value="" disabled selected>Kya lekar aayu main tumhare liye?</option>
+                <option value="rose">Rose</option>
+                <option value="chocolate">Ferrero Rocher</option>
+                <option value="heart">Teddy</option>
+                <option value="website">something else</option>
+            </select>
+
+            <!-- Optional Input for "Something else" -->
+            <div class="optional-input" id="optional-input">
+                <label for="other-item">kya chahiye:</label>
+                <input type="text" id="other-item" name="other-item" class="contact-inputs">
+            </div>
+
+            <button type="submit">Submit <img src="assets/arrow_icon.png" alt="Submit Icon"></button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('propose-time').addEventListener('change', function() {
+            var optionalInput = document.getElementById('optional-input');
+            if (this.value === 'website') {
+                optionalInput.style.display = 'block';
+            } else {
+                optionalInput.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
